@@ -13,10 +13,6 @@ function Ball(ctx, x, y, radius, color) {
 	this.getCtx = function() {
 		return _ctx;
 	}
-	this.setCtx = function(value) {
-		_ctx = value;
-	}
-
 	this.getX = function() {
 		return _x;
 	}
@@ -41,4 +37,14 @@ function Ball(ctx, x, y, radius, color) {
 	this.setColor = function(value) {
 		_color = value;
 	}
+}
+
+Ball.prototype.draw = function() {
+	var ctx = this.getCtx();
+	ctx.save();
+	ctx.fillStyle = this.getColor();
+	ctx.beginPath();
+	ctx.arc(this.getX(), this.getY(), this.getRadius(), 0, 2 * Math.PI);
+	ctx.fill();
+	ctx.restore();
 }
